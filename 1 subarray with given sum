@@ -1,0 +1,45 @@
+def subarray(pos,sum,a):
+    tempsum=sum
+    length=len(a)
+    r=[1]
+    j=0
+    for i in range(pos,length+1):
+        if tempsum==0:
+            r.append(i)
+            break
+        if tempsum<0:
+            while tempsum<0:
+               tempsum=tempsum+a[j]
+               r.pop()
+               r.append(j+2)
+               j=j+1
+            if tempsum == 0:
+                r.append(i)
+                break
+
+        if i<length:
+            tempsum = tempsum - a[i]
+    if len(r)==2:
+       print(*r)
+    else:
+        print(-1)
+
+
+noOfInput=int(input())
+temp=noOfInput
+sum=[0 for i in range(noOfInput)]
+arr=[0 for i in range(noOfInput)]
+
+while temp-1>-1:
+
+
+    sum[temp-1]=[int(ele) for ele in input().split()]
+    arr[temp-1]=[int(ele) for ele in input().split()]
+    temp -= 1
+
+while noOfInput-1>-1:
+    sumcurr=sum[noOfInput-1]
+    b=subarray(0,sumcurr[1],arr[noOfInput-1])
+
+
+    noOfInput-=1
