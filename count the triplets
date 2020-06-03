@@ -1,0 +1,36 @@
+def tripl(n,arr):
+    arr.sort()
+    count=0
+    for k in range(n-1,-1,-1):
+        i=0
+        j=k-1
+        while i<j and j<k:
+            curr=arr[i]+arr[j]
+            if arr[k]==curr:
+                count+=1
+                i+=1
+                j-=1
+
+            elif arr[k]>curr:
+                i+=1
+            else:
+                j-=1
+    return count
+
+noOfInput=int(input())
+temp=noOfInput
+sum=[0 for i in range(noOfInput)]
+arr=[0 for i in range(noOfInput)]
+
+while temp-1>-1:
+    sum[temp-1]=[int(ele) for ele in input().split()]
+    arr[temp-1]=[int(ele) for ele in input().split()]
+    temp -= 1
+while noOfInput-1>-1:
+    c=tripl(sum[noOfInput-1][0],arr[noOfInput-1])
+    if c !=0:
+        print(c)
+    else:
+        print(-1)
+
+    noOfInput-=1
