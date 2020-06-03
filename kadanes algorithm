@@ -1,0 +1,29 @@
+def suba(n,arr):
+    maxi=arr[0]
+    prev=arr[0]
+    for i in range(1,n):
+        if prev<0:
+            sum=arr[i]
+        else:
+            sum = prev + arr[i]
+        if sum>maxi:
+            maxi=sum
+        prev=sum
+    return maxi
+
+
+noOfInput=int(input())
+temp=noOfInput
+sum=[0 for i in range(noOfInput)]
+arr=[0 for i in range(noOfInput)]
+
+while temp-1>-1:
+    sum[temp-1]=[int(ele) for ele in input().split()]
+    arr[temp-1]=[int(ele) for ele in input().split()]
+    temp -= 1
+while noOfInput-1>-1:
+    c=suba(sum[noOfInput-1][0],arr[noOfInput-1])
+    print(c)
+
+
+    noOfInput-=1
