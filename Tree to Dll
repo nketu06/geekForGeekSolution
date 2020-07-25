@@ -1,0 +1,29 @@
+def LL(root):
+    if root==None:
+        return None
+    else:
+        prev=LL(root.left)
+        if(prev!=None):
+            curr=prev
+            while(curr.right!=None):
+                curr=curr.right
+            curr.right=root
+            root.left=curr
+        next=LL(root.right)
+        if(next!=None):
+            curr=next
+            while(curr.left!=None):
+                curr=curr.left
+            root.right=curr
+            curr.left=root
+        return root
+
+
+
+def bToDLL(root):
+    temp=root
+    # do Code here
+    while(root.left!=None):
+        root=root.left
+    LL(temp)
+    return root
